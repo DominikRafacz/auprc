@@ -12,7 +12,8 @@
                       task_properties = "twoclass",
                       packages = "auprc"
                     )
-                  },
+                  }),
+                private = list(
                   .score = function(prediction, ...) {
                     positive <- levels(prediction$truth)[1]
                     auprc(prediction$data$prob[, positive],
