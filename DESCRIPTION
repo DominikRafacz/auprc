@@ -1,0 +1,16 @@
+Package: auprc
+Title: Calculate AUPRC Measure For Classification Tasks
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Dominik",
+           family = "Rafacz",
+           role = c("aut", "cre"),
+           email = "doinikrafacz@gmail.com"))
+Description: The `auprc` package provides function for calculating AUPRC measure 
+    and also registers measure for mlr3.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to
+    pick a license
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0
