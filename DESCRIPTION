@@ -8,8 +8,7 @@ Authors@R:
            email = "doinikrafacz@gmail.com"))
 Description: The `auprc` package provides function for calculating AUPRC measure 
     and also registers measure for mlr3.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
