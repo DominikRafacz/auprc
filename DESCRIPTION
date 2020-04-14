@@ -5,7 +5,7 @@ Authors@R:
     person(given = "Dominik",
            family = "Rafacz",
            role = c("aut", "cre"),
-           email = "doinikrafacz@gmail.com")
+           email = "dominikrafacz@gmail.com")
 Description: The `auprc` package provides function for calculating AUPRC measure 
     and also registers measure for mlr3.
 License: MIT + file LICENSE
