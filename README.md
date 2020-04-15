@@ -24,3 +24,5 @@ or
 ```{r}
 mlr_measures$get("classif.auprc")
 ```
+
+Important! If you want to make sure that AUPRC for `mlr3` is computed correctly, you have to specify parameter `positive` during creation of new `ClassifTask`.
