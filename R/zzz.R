@@ -7,7 +7,7 @@
                     super$initialize(
                       id = "classif.auprc",
                       range = c(0, 1),
-                      minimize = TRUE,
+                      minimize = FALSE,
                       predict_type = "prob",
                       task_properties = "twoclass",
                       packages = "auprc"
