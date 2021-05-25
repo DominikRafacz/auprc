@@ -24,19 +24,29 @@ precision_recall_curve <- function(prob, y_truth, positive_value) {
     ylim(c(0, 1))
 } 
 
-#' @importFrom dplyr mutate
+#' @importFrom dplyr `%>%` mutate if_else
 calculate_measures_by_threshold <- function(prob, y_truth, positive_value) {
-  real_positives <- sum(y_truth == positive_value)
+  thresh <- seq(0, 1, length.out = 10001)
+  prob <- findInterval(prob,
+                       thresh,
+                       rightmost.closed = TRUE)
+  true_positives <- rep(0, 10001)
+  det_positives <- rep(0, 10001)
   is_positive_value <- y_truth == positive_value
   
-  as.data.frame(t(sapply(seq(0, 1, length.out = 10000), function(thresh) {
-    true_positives <- sum((prob >= thresh) & is_positive_value)
-    det_positives <- sum(prob >= thresh)
-    c(thresh = thresh, 
-      prec = true_positives / det_positives, 
-      rec = true_positives / real_positives)
-  }))) %>%
-    mutate(prec = ifelse(is.nan(prec), 1, prec))
+  for (i in seq_along(is_positive_value)) {
+    if (is_positive_value[i]) {
+      true_positives[seq_len(prob[i])] <- true_positives[seq_len(prob[i])] + 1
+    }
+    det_positives[seq_len(prob[i])] <- det_positives[seq_len(prob[i])] + 1
+  }
+  
+  data.frame(
+    thresh = thresh,
+    prec = true_positives / det_positives,
+    rec = true_positives / sum(is_positive_value)
+  ) %>%
+    mutate(prec = if_else(is.nan(prec), 1, prec))
 }
 
 #' @importFrom dplyr `%>%` group_by arrange slice ungroup mutate summarise pull
