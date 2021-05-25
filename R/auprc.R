@@ -1,8 +1,18 @@
 #' Calculates AUPRC measure
-#' @param prob `numeric` vector of probabilities of belonging to class `positive_value`
-#' @param y_truth vector of "true" values of response vector
-#' @param positive_value which class from `y_truth` should be treated as positive
-#' @return Value of area under precision-recall curve
+#' 
+#' @param prob `[numeric]`\cr
+#'  A vector of predicted probabilities of belonging to class
+#'  `positive_value`.
+#' @param y_truth `[any]`\cr
+#'  A vector of "true" labels for predicted observations. Each element
+#'  should be either `positive_value` or some other value, treated as
+#'  (not specified) negative value.
+#' @param positive_value `[any(1)]`\cr
+#'  Which of the two distinct values from `y_truth` should be treated
+#'  as positive.
+#' 
+#' @return Value of area under precision-recall curve.
+#' 
 #' @importFrom dplyr `%>%`
 #' @export
 auprc <- function(prob, y_truth, positive_value) {
@@ -11,8 +21,11 @@ auprc <- function(prob, y_truth, positive_value) {
 } 
 
 #' Draws AUPRC curve
+#' 
 #' @inheritParams auprc
-#' @return plot of precision-recall curve
+#' 
+#' @return Plot of precision-recall curve.
+#' 
 #' @importFrom dplyr `%>%`
 #' @importFrom ggplot2 ggplot geom_line aes xlim ylim
 #' @export
