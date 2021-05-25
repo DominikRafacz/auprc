@@ -27,9 +27,10 @@ precision_recall_curve <- function(prob, y_truth, positive_value) {
 #' @importFrom dplyr mutate
 calculate_measures_by_threshold <- function(prob, y_truth, positive_value) {
   real_positives <- sum(y_truth == positive_value)
+  is_positive_value <- y_truth == positive_value
   
   as.data.frame(t(sapply(seq(0, 1, length.out = 10000), function(thresh) {
-    true_positives <- sum((prob >= thresh) & (y_truth == positive_value))
+    true_positives <- sum((prob >= thresh) & is_positive_value)
     det_positives <- sum(prob >= thresh)
     c(thresh = thresh, 
       prec = true_positives / det_positives, 
