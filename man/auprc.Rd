@@ -7,14 +7,21 @@
 auprc(prob, y_truth, positive_value)
 }
 \arguments{
-\item{prob}{\code{numeric} vector of probabilities of belonging to class \code{positive_value}}
+\item{prob}{\verb{[numeric]}\cr
+A vector of predicted probabilities of belonging to class
+\code{positive_value}.}
 
-\item{y_truth}{vector of "true" values of response vector}
+\item{y_truth}{\verb{[any]}\cr
+A vector of "true" labels for predicted observations. Each element
+should be either \code{positive_value} or some other value, treated as
+(not specified) negative value.}
 
-\item{positive_value}{which class from \code{y_truth} should be treated as positive}
+\item{positive_value}{\verb{[any(1)]}\cr
+Which of the two distinct values from \code{y_truth} should be treated
+as positive.}
 }
 \value{
-Value of area under precision-recall curve
+Value of area under precision-recall curve.
 }
 \description{
 Calculates AUPRC measure
